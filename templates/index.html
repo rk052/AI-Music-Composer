@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Melody Generator</title>
+</head>
+
+<body>
+
+    <div class="container center">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="white">Melody Generator</h1>
+                <p class="white">Upload a MIDI file to generate a unique melody.</p>
+            </div>
+        </div>
+
+        <form name="upload" method="post" action="/" enctype="multipart/form-data" accept-charset="utf-8">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 center">
+                    <div class="btn-container">
+                        <h1 class="imgupload"><i class="fa fa-music"></i></h1>
+                        <p id="namefile">Only MIDI files allowed! (.mid)</p>
+                        <!-- <button type="button" id="btnup" class="btn btn-primary btn-lg">Browse for your MIDI!</button>
+                        <input type="file" value="" name="fileup" id="fileup" accept=".mid"> -->
+                        <label for="file">Upload</label>
+                        <input type="file" name="file" id="file" accept=".mid" hidden>
+                        <span id="file-chosen">No file chosen</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <button type="submit" id="submitbtn">Generate Melody</button>
+                </div>
+            </div>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    </div>
+
+    <a href="http://www.emilianocostanzo.com" target="_blank" id="sign">EMI</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
